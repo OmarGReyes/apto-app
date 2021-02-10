@@ -33,8 +33,8 @@ router.get("/aptos/filter", async (req, res) => {
       if (apto.length > 0) {
         res.render("index", { apto, response });
       } else {
-        let nofound = true
-        res.render("index",{nofound});
+        let nofound = true;
+        res.render("index", { nofound,response });
       }
     } catch (err) {
       const apto = await Apto.find({
@@ -43,8 +43,8 @@ router.get("/aptos/filter", async (req, res) => {
       if (apto.length > 0) {
         res.render("index", { apto, response });
       } else {
-        let nofound = true
-        res.render("index",{nofound});
+        let nofound = true;
+        res.render("index", { nofound,response });
       }
     }
   }

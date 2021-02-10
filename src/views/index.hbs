@@ -21,21 +21,24 @@
                         <form action="/aptos/filter" method="GET" class="col-md-12">
                             <div class="form-group ">
                                 <div class="row">
-                                    <div class="col-md-3">
-                                        <input type="number" name="min" id="" class="form-control"
-                                            placeholder="Valor mínimo" value="{{response.min}}">
+                                    <div class="col-md-4">
+                                        <label class="titleSearch" for="min">Precio mínimo</label><br>
+                                        <input type="number" name="min" id="min" class="form-control"
+                                            placeholder="Precio mínimo" value="{{response.min}}">
 
                                     </div>
-                                    <div class="col-md-3">
-                                        <input type="number" name="max" id="" class="form-control"
-                                            placeholder="Valor máximo" value="{{response.max}}">
+                                    <div class="col-md-4">
+                                        <label class="titleSearch" for="max">Precio máximo</label><br>
+                                        <input type="number" name="max" id="max" class="form-control"
+                                            placeholder="Precio máximo" value="{{response.max}}">
                                     </div>
-                                    <div class="col-md-3">
-                                        <input type="number" name="hab" id="" class="form-control"
+                                    <div class="col-md-4">
+                                        <label class="titleSearch" for="hab">Número de habitaciones</label><br>
+                                        <input type="number" name="hab" id="hab" class="form-control"
                                             placeholder="Número de habitaciones" value="{{response.hab}}">
                                     </div>
 
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-3 mt-2">
                                         <button class="btn btn-primary btn-block" type="submit">Buscar</button>
                                     </div>
 
