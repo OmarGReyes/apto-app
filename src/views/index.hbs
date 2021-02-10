@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <h1 class="mx-auto">Welcome to index hbs</h1>
+        <div class="card">
+            <div class="card-body mx-auto">
+                <h1 class="card-title">Apartmentos en alquiler:</h1>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        
+                        <form action="/aptos/filter" method="GET" class="col-md-12">
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <input type="number" name="min" id="" class="form-control"
+                                            placeholder="Valor mínimo" value="{{response.min}}">
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="number" name="max" id="" class="form-control"
+                                            placeholder="Valor máximo" value="{{response.max}}">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="number" name="hab" id="" class="form-control"
+                                            placeholder="Número de habitaciones" value="{{response.hab}}">
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <button class="btn btn-primary btn-block" type="submit">Buscar</button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+
+            {{#if nofound}}
+                <h2>No tenemos ningún apto con sus especificaciones</h2>
+            {{else}}
+            <div class="row">
+
+            {{#each apto}}
+                <div class="card col-md-5 ml-5 mt-3">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            {{Titulo}}
+                        </h4>
+                        <p> {{Descripcion}}</p>
+                        <p>Precio: {{Precio}}</p>
+                        {{#if Habitaciones}}
+                        <p>Habitaciones: {{Habitaciones}}</p>
+                        {{else}}
+                        <p>Habitaciones: Sin información</p>
+                        {{/if}}
+
+                    </div>
+                </div>
+            {{/each}}
+            {{/if}}
+            </div>
+
+        </div>
+    </main>
+</body>
+
+</html>
