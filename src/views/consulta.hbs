@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+
+                <form action="/consulta/filter" method="POST" class="col-md-12">
+                    <div class="form-group ">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="titleSearch" for="lat">Latitud</label><br>
+                                <input type="number" step="any" name="lat" id="lat" class="form-control"
+                                    placeholder="Inserte latitud" value="{{response.lat}}" required>
+
+                            </div>
+                            <div class="col-md-4">
+                                <label class="titleSearch" for="lon">Longitud</label><br>
+                                <input type="number" step="any" name="lon" id="lon" class="form-control"
+                                    placeholder="Inserte longitud" value="{{response.lon}}" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="titleSearch" for="km">Inserte distancia en km</label><br>
+                                <input type="number" step="any" name="km" id="km" class="form-control"
+                                    placeholder="Distancia en km" value="{{response.km}}" required>
+                            </div>
+
+                            <div class="form-group col-md-3 mt-2">
+                                <button class="btn btn-primary btn-block" type="submit">Buscar</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+            {{#if avg}}
+            <h1>El promedio de apartamentos en esta zona es de: {{avg}} Euros</h1>
+            <div class="row">
+
+                {{#each aptosEnArea}}
+                <div class="card col-md-5 ml-5 mt-3">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            {{Titulo}}
+                        </h4>
+                        <p> {{Descripcion}}</p>
+                        <p>Precio: {{Precio}}</p>
+                        {{#if Habitaciones}}
+                        <p>Habitaciones: {{Habitaciones}}</p>
+                        {{else}}
+                        <p>Habitaciones: Sin información</p>
+                        {{/if}}
+
+                    </div>
+                </div>
+                {{/each}}
+                {{else}}
+                {{#if response}}
+                <h1>No se encontraron apartamentos en esta zona</h1>
+                {{/if}}
+                {{/if}}
+
+
+
+
+
+
+
+            </div>
+        </div>
+</body>
+
+</html>

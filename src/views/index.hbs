@@ -12,7 +12,7 @@
         <h1 class="mx-auto">Welcome to index hbs</h1>
         <div class="card">
             <div class="card-body mx-auto">
-                <h1 class="card-title">Apartmentos en alquiler:</h1>
+                <h1 class="card-title">Apartamentos en alquiler</h1>
             </div>
             <div class="card">
                 <div class="card-body">
@@ -55,7 +55,7 @@
                 <h2>No tenemos ningún apto con sus especificaciones</h2>
             {{else}}
             <div class="row">
-
+             {{#if response}}   
             {{#each apto}}
                 <div class="card col-md-5 ml-5 mt-3">
                     <div class="card-body">
@@ -73,6 +73,7 @@
                     </div>
                 </div>
             {{/each}}
+            {{/if}}
             {{/if}}
             </div>
 
