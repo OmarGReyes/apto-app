@@ -11,8 +11,8 @@ router.get("/", async (req, res) => {
 
 router.get("/aptos/filter", async (req, res) => {
   let response = req.query;
-  // let responseNumber = response.map(function(element){
-  //     return parseFloat(element)
+  // let responseNumber = response.map(parseFloat(element){
+  //     return (element)
   // })
   //  response = response.forEach(element => {
   //     element = parseFloat(element)
@@ -76,15 +76,13 @@ router.post("/consulta/filter", async (req,res)=>{
   let preciosEnArea = [];
   let aptosEnArea = []
 
-  aptos.forEach(apto =>{
-    //console.log(apto.lat)
+  aptos.forEach(apto =>{    
 
     if(getDistanceFromLatLonInKm(lat,lon, apto.Latitud,apto.Longitud)<=km){
       preciosEnArea.push(apto.Precio)
       aptosEnArea.push(apto)
     }    
   })
-
 
   if (preciosEnArea.length >0){
     let sum = preciosEnArea.reduce((previous,current) => current+=previous);
@@ -97,10 +95,12 @@ router.post("/consulta/filter", async (req,res)=>{
   }else{
 
     res.render('consulta',{response})
-    console.log('Lo siento no se encontró aptos en esta zona')
+    
   }
 })
 
+
+// <--------- Distancia de LatLon a km ------>
 function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
   let R = 6371; // Radius of the earth in km
   let dLat = deg2rad(lat2-lat1);  // deg2rad below

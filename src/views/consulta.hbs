@@ -3,16 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Export to Excel</title>
+
+
+
 </head>
 
 <body>
     <div class="card">
+        <div class=" mx-auto">
+            <h1 class="card-title">Consulta ubicaciones y precios</h1>
+        </div>
+        <div class="mx-auto">
+            <h3 class="display-5">Consulta apartamentos y precios cercanos a una ubicación, ¡no te
+                lo pierdas!</h3>
+        </div>
+
         <div class="card-body">
             <div class="row">
-
                 <form action="/consulta/filter" method="POST" class="col-md-12">
                     <div class="form-group ">
                         <div class="row">
@@ -43,41 +51,62 @@
                 </form>
 
             </div>
-            {{#if avg}}
-            <h1>El promedio de apartamentos en esta zona es de: {{avg}} Euros</h1>
-            <div class="row">
 
-                {{#each aptosEnArea}}
-                <div class="card col-md-5 ml-5 mt-3">
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            {{Titulo}}
-                        </h4>
-                        <p> {{Descripcion}}</p>
-                        <p>Precio: {{Precio}}</p>
-                        {{#if Habitaciones}}
-                        <p>Habitaciones: {{Habitaciones}}</p>
-                        {{else}}
-                        <p>Habitaciones: Sin información</p>
-                        {{/if}}
 
-                    </div>
+
+
+
+            <div>
+
+                {{#if avg}}
+                <h3>El promedio de precios para los apartamentos de esta zona es de: {{avg}} Euros</h3>
+
+                <div style="margin: 20px;">
+                    <table id="example" class="display nowrap dataTable cell-border" style="width:100%">
+                        <thead>
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Precio</th>
+                                <th>Habitaciones</th>
+                                <th>Baños</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {{#each aptosEnArea}}
+                            <tr>
+
+                                <td>{{ID}}</td>
+                                <td>{{Precio}}</td>
+                                {{#if Habitaciones}}
+                                <td>{{Habitaciones}}</td>
+                                {{else}}
+                                <td>Sin información</td>
+                                {{/if}}
+                                <td>{{Baños}}</td>
+
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+
+                    {{else}}
+                    {{#if response}}
+                    <h1>No se encontraron apartamentos en esta zona</h1>
+                    {{/if}}
+                    {{/if}}
                 </div>
-                {{/each}}
-                {{else}}
-                {{#if response}}
-                <h1>No se encontraron apartamentos en esta zona</h1>
-                {{/if}}
-                {{/if}}
-
-
-
-
-
-
-
             </div>
         </div>
+    </div>
+
+
+
+
+
+
 </body>
 
 </html>
