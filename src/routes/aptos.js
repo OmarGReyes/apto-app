@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Apto = require("../models/Apto");
 
-router.get("/", async (req, res) => {
+router.get("/aptos", async (req, res) => { //modificado
   const apto = await Apto.find().lean(); //Importante
   //.lean para evtar el error de handlebars
   res.render("index", { apto });
