@@ -17,11 +17,12 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://datatables.net/media/css/site-examples.css">
     <link rel="stylesheet" type="text/css"href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
-    <link rel="stylesheet" href="/css/main.css">
+    
 
     {{!-- Bootstrap4 --}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
 
 
 
@@ -31,12 +32,12 @@
 <body>
 
     <main>
-
         {{>navigation}}
         <div class="container mt-5">
             {{{body}}}
         </div>
     </main>
+        {{>footer}}        
 
 
    
@@ -50,9 +51,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.16/dist/js/uikit.min.js"></script>
+    
     <!--Scripts -->
     <script src="/js/table.js"> </script>
     <script src="/js/inputs.js" ></script>
+    <script src="/js/helpers.js" ></script>
 </body>
 
 </html>

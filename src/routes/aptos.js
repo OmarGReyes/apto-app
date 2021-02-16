@@ -4,9 +4,11 @@ const router = express.Router();
 const Apto = require("../models/Apto");
 
 router.get("/aptos", async (req, res) => { //modificado
-  const apto = await Apto.find().lean(); //Importante
+  const {page =1, limit=10} = req.query;
+  const apto = await Apto.find().limit(limit*1).skip((page-1)*limit).lean(); //Importante
   //.lean para evtar el error de handlebars
-  res.render("index", { apto });
+  let paginator = Paginator(apto.length)
+  res.render("index", { apto , paginator});
 });
 
 router.get("/aptos/filter", async (req, res) => {
@@ -17,6 +19,8 @@ router.get("/aptos/filter", async (req, res) => {
   //  response = response.forEach(element => {
   //     element = parseFloat(element)
   // });
+
+  const {page =1, limit=10} = req.query;
   let { max, min, hab } = response;
   max = parseFloat(max);
   min = parseFloat(min);
@@ -29,11 +33,15 @@ router.get("/aptos/filter", async (req, res) => {
           ...(min ? { $gte: min } : {}),
         },
         ...(hab ? { Habitaciones: hab } : {}),
-      }).lean();
+      }).limit(limit*1).skip((page-1)*limit).lean();
 
 
       if (apto.length > 0) {
-        res.render("index", { apto, response });
+        
+        let paginator = Paginator(apto.length)
+        console.log(paginator)
+        res.render("index", { apto, response, paginator });
+        
       } else {
         let nofound = true;
         res.render("index", { nofound,response });
@@ -41,16 +49,18 @@ router.get("/aptos/filter", async (req, res) => {
     } catch (err) {
       const apto = await Apto.find({
         ...(hab ? { Habitaciones: hab } : {}),
-      }).lean();
+      }).limit(limit*1).skip((page-1)*limit).lean();
       
       
       if (apto.length > 0) {
-        res.render("index", { apto, response });
+        let paginator = Paginator(apto.length)
+        res.render("index", { apto, response, paginator });
       } else {
         let nofound = true;
         res.render("index", { nofound,response });
       }
     }
+    
   }
 });
 
@@ -58,8 +68,7 @@ router.get("/aptos/filter", async (req, res) => {
 //<------- Consulta de precios con coordenadas ---------->
 
 router.get("/consulta", async (req, res) => {
-   //Importante
-  //.lean para evtar el error de handlebars
+  
   res.render("consulta");
 });
 
@@ -100,6 +109,25 @@ router.post("/consulta/filter", async (req,res)=>{
 })
 
 
+// <------- Página "ver más por apto" ------->
+
+router.get('/aptos/:id', async(req,res) =>{
+  // console.log(req.params.id)
+  let apto = await Apto.find({ID: req.params.id}).lean()
+  console.log(apto)
+  res.render("aptamento",{ apto });  
+});
+
+
+//<--- Funciones de ayuda ----->
+
+function Paginator(lenApto){
+  console.log(lenApto)
+  if (lenApto == 10){
+    return true
+  }
+}
+
 // <--------- Distancia de LatLon a km ------>
 function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
   let R = 6371; // Radius of the earth in km
@@ -114,9 +142,8 @@ function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
   let d = R * c; // Distance in km
   return d;
 }
-
+//<----grados to dadianes ---->
 function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
-
 module.exports = router;

@@ -1,11 +1,7 @@
 const boton = document.querySelector('#buscar')
-
-
 function cargarEventListeners(){
     boton.addEventListener('click', minMax)
 }
-
-
 const minMax =  (e) =>{
     
     console.log('Entramos a la función')
@@ -20,8 +16,6 @@ const minMax =  (e) =>{
     }
 
     console.log(min)
-    console.log(max)
-    
-    
+    console.log(max)    
 }
 cargarEventListeners();

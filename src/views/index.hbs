@@ -56,22 +56,36 @@
             <div class="row">
              {{#if response}}   
             {{#each apto}}
-                <div class="card col-md-5 col-sm-10 ml-5 mt-3">
+                <div class="card col-md-5 col-sm-10 ml-5 mt-3 mb-4">
                     <div class="card-body">
                         <h4 class="card-title">
                             {{Titulo}}
                         </h4>
-                        <p> {{Descripcion}}</p>
-                        <p>Precio: {{Precio}}</p>
+                        <p><b> Dirección</b>: {{Direccion}}</p>
+                        <p><b>Precio</b>: {{Precio}}</p>
                         {{#if Habitaciones}}
-                        <p>Habitaciones: {{Habitaciones}}</p>
+                        <p><b>Habitaciones</b>: {{Habitaciones}}</p>
                         {{else}}
-                        <p>Habitaciones: Sin información</p>
+                        <p><b>Habitaciones</b>: Sin información</p>
                         {{/if}}
 
+                        <a href="/aptos/{{ID}}">
+                        <button class="btn btn-primary">Ver más</button>
+                        </a>          
                     </div>
                 </div>
             {{/each}}
+                    {{#if paginator}}
+                    <div class="mx-auto">
+
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>                              
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    {{/if}}
             {{/if}}
             {{/if}}
             </div>
