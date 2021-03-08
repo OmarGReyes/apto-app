@@ -8,11 +8,12 @@ var helpers = require('handlebars-helpers')
 
 
 //Initialization 
-const app = express();
+import app from './app'
+
 require('./database');
 
 //Settings
-app.set("port", process.env.PORT || 3000); //available port or 3000
+app.set("port", process.env.PORT || 4000); //available port or 3000
 app.set("views", path.join(__dirname, "views")); //Looking for views folder
 app.engine(
   ".hbs",
@@ -31,14 +32,14 @@ app.set("view engine", ".hbs",'handlebars');
 app.use(express.urlencoded({ extended: false })); //Encode URL
 app.use(methodOverride("_method"));
 
-//Routes
-app.use(require("./routes/aptos"));
-app.use(require("./routes/index")); //modificado
+ //modificado
 //app.use(require("./routes/users")); //modificado
 
 //Static Files
 app.use(express.static(path.join(__dirname, "public")));
-//Server is listening
+
+
+
 app.listen(app.get("port"), () => {
   console.log("Server on port: ", app.get("port"));
 });
