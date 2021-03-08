@@ -34,7 +34,7 @@ app.use(methodOverride("_method"));
 //Routes
 app.use(require("./routes/aptos"));
 app.use(require("./routes/index")); //modificado
-app.use(require("./routes/users")); //modificado
+//app.use(require("./routes/users")); //modificado
 
 //Static Files
 app.use(express.static(path.join(__dirname, "public")));
