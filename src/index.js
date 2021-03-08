@@ -10,7 +10,7 @@ var helpers = require('handlebars-helpers')
 //Initialization 
 import app from './app'
 
-require('./database');
+
 
 
 app.listen(app.get("port"), () => {

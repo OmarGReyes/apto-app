@@ -109,13 +109,6 @@ export const consulta = async (req,res)=>{
   }
   
 
-export const updateAptoById = (req,res) =>{
-    
-}
-
-export const deleteAptoById = (req,res) =>{
-    
-}
 
 //<--- Funciones de ayuda ----->
 

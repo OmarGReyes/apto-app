@@ -22,6 +22,8 @@ app.use('/api/auth', authRoutes)
 // app.use('/api/user', userRoutes)
 app.use('/users', usersRoutes)
 
+require('./database');
+
 //Settings
 app.set("port", process.env.PORT || 4000); //available port or 3000
 app.set("views", path.join(__dirname, "views")); //Looking for views folder
