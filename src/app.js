@@ -21,6 +21,9 @@ app.use(morgan('dev'))
 app.use('/api/auth', authRoutes)
 // app.use('/api/user', userRoutes)
 app.use('/users', usersRoutes)
+//Routes
+app.use(require("./routes/aptos"));
+app.use(require("./routes/index"));
 
 
 export default app;

@@ -32,9 +32,7 @@ app.set("view engine", ".hbs",'handlebars');
 app.use(express.urlencoded({ extended: false })); //Encode URL
 app.use(methodOverride("_method"));
 
-//Routes
-app.use(require("./routes/aptos"));
-app.use(require("./routes/index")); //modificado
+ //modificado
 //app.use(require("./routes/users")); //modificado
 
 //Static Files
