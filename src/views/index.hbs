@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>       
+        <div class="card">
+            <div class="card-body mx-auto">
+                <h1 class="card-title">Apartamentos en alquiler</h1>
+            </div>
+            
+                <div class="card-body">
+                    <div class="row">
+                        
+                        <form action="/aptos/filter" method="GET" class="col-md-12">
+                            <div class="form-group ">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="titleSearch" for="min">Precio mínimo</label><br>
+                                        <input type="number" name="min" id="min" class="form-control"
+                                            placeholder="Precio mínimo" value="{{response.min}}" min="0">
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="titleSearch" for="max">Precio máximo</label><br>
+                                        <input type="number" name="max" id="max" class="form-control"
+                                            placeholder="Precio máximo" value="{{response.max}}" min="1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="titleSearch" for="hab">Número de habitaciones</label><br>
+                                        <input type="number" name="hab" id="hab" class="form-control"
+                                            placeholder="Número de habitaciones" value="{{response.hab}}" min="1" >
+                                    </div>
+                                    <input id="page" name="page" type="hidden" value="1">
+
+                                    <div class="form-group col-md-3 mt-2">
+                                        <button class="btn btn-primary btn-block" type="submit" id="buscar">Buscar</button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </form>
+                        
+                    </div>
+                </div>
+            
+
+            {{#if nofound}}
+                <h2>No tenemos ningún apto con sus especificaciones</h2>
+            {{else}}
+            <div class="row">
+             {{#if response}}   
+            {{#each apto}}
+                <div class="card col-md-5 col-sm-10 ml-5 mt-3 mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            {{Titulo}}
+                        </h4>
+                        <p><b> Dirección</b>: {{Direccion}}</p>
+                        <p><b>Precio</b>: {{Precio}}</p>
+                        {{#if Habitaciones}}
+                        <p><b>Habitaciones</b>: {{Habitaciones}}</p>
+                        {{else}}
+                        <p><b>Habitaciones</b>: Sin información</p>
+                        {{/if}}
+
+                        <a href="/aptos/{{ID}}">
+                        <button class="btn btn-primary">Ver más</button>
+                        </a>          
+                    </div>
+                </div>
+            {{/each}}
+                    {{#if paginator}}
+                    <div class="mx-auto">
+
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item" id='anterior'><a class="page-link" href="#">Anterior</a></li>                              
+                                <li class="page-item" id='siguiente'><a class="page-link" href="#">Siguiente</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    {{/if}}
+            {{/if}}
+            {{/if}}
+            </div>
+
+        </div>
+    </main>
+
+    
+
+</body>
+
+</html>

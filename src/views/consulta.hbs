@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Export to Excel</title>
+
+
+
+</head>
+
+<body>
+    <div class="card">
+        <div class=" mx-auto">
+            <h1 class="card-title">Consulta ubicaciones y precios</h1>
+        </div>
+        <div class="mx-auto">
+            <h3 class="display-5">Consulta apartamentos y precios cercanos a una ubicación, ¡no te
+                lo pierdas!</h3>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <form action="/consulta/filter" method="POST" class="col-md-12">
+                    <div class="form-group ">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="titleSearch" for="lat">Latitud</label><br>
+                                <input type="number" step="any" name="lat" id="lat" class="form-control"
+                                    placeholder="Inserte latitud" value="{{response.lat}}" required>
+
+                            </div>
+                            <div class="col-md-4">
+                                <label class="titleSearch" for="lon">Longitud</label><br>
+                                <input type="number" step="any" name="lon" id="lon" class="form-control"
+                                    placeholder="Inserte longitud" value="{{response.lon}}" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="titleSearch" for="km">Inserte distancia en km</label><br>
+                                <input type="number" step="any" name="km" id="km" class="form-control"
+                                    placeholder="Distancia en km" value="{{response.km}}" required>
+                            </div>
+
+                            <div class="form-group col-md-3 mt-2">
+                                <button class="btn btn-primary btn-block" type="submit">Buscar</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+
+
+
+
+            <div>
+
+                {{#if avg}}
+                <h3>El promedio de precios para los apartamentos de esta zona es de: {{avg}} Euros</h3>
+
+                <div style="margin: 20px;">
+                    <table id="example" class="display nowrap dataTable cell-border" style="width:100%">
+                        <thead>
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Precio</th>
+                                <th>Habitaciones</th>
+                                <th>Baños</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {{#each aptosEnArea}}
+                            <tr>
+
+                                <td>{{ID}}</td>
+                                <td>{{Precio}}</td>
+                                {{#if Habitaciones}}
+                                <td>{{Habitaciones}}</td>
+                                {{else}}
+                                <td>Sin información</td>
+                                {{/if}}
+                                <td>{{Baños}}</td>
+
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+
+                    {{else}}
+                    {{#if response}}
+                    <h1>No se encontraron apartamentos en esta zona</h1>
+                    {{/if}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
