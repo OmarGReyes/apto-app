@@ -22,33 +22,5 @@ app.use('/api/auth', authRoutes)
 // app.use('/api/user', userRoutes)
 app.use('/users', usersRoutes)
 
-require('./database');
 
-//Settings
-app.set("port", process.env.PORT || 4000); //available port or 3000
-app.set("views", path.join(__dirname, "views")); //Looking for views folder
-app.engine(
-  ".hbs",
-  exphbs({
-    defaultLayout: "main",
-    layoutsDir: path.join(app.get("views"), "layouts"), //views folder + layouts
-    partialsDir: path.join(app.get("views"), "partials"), //Bars and things like that
-    extname: ".hbs",
-    handlebars: allowInsecurePrototypeAccess(_handlebars),
-    helpers: require('./helpers/helpers')
-  })
-);
-app.set("view engine", ".hbs",'handlebars');
-
-//Middlewares
-app.use(express.urlencoded({ extended: false })); //Encode URL
-app.use(methodOverride("_method"));
-
-//Routes
-app.use(require("./routes/aptos"));
-app.use(require("./routes/index")); //modificado
-//app.use(require("./routes/users")); //modificado
-
-//Static Files
-app.use(express.static(path.join(__dirname, "public")));
 export default app;
