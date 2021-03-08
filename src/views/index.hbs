@@ -36,6 +36,7 @@
                                         <input type="number" name="hab" id="hab" class="form-control"
                                             placeholder="Número de habitaciones" value="{{response.hab}}" min="1" >
                                     </div>
+                                    <input id="page" name="page" type="hidden" value="1">
 
                                     <div class="form-group col-md-3 mt-2">
                                         <button class="btn btn-primary btn-block" type="submit" id="buscar">Buscar</button>
@@ -80,8 +81,8 @@
 
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>                              
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                <li class="page-item" id='anterior'><a class="page-link" href="#">Anterior</a></li>                              
+                                <li class="page-item" id='siguiente'><a class="page-link" href="#">Siguiente</a></li>
                             </ul>
                         </nav>
                     </div>
