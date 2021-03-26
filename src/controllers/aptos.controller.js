@@ -1,5 +1,6 @@
 const Apto = require("../models/Apto");
 
+
 export const createApto = (req, res) => {};
 
 export const getAptos = async (req, res) => {
