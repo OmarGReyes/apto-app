@@ -22,6 +22,17 @@ Application created for the management of information from a database (MongoDB) 
 This project was deployed on <a href= "https://thawing-ravine-09830.herokuapp.com/" target="_blank">Heroku</a>
 and for the MongoDB cloud services was used <a href= "https://www.mongodb.com/cloud/atlas" target="_blank">MongoDB Atlas</a>
 
+## Deployment 2.0:
+
+For the 2.0 deployment of the application the following functionalities have been added:
+
+* An apartment detail view that can be accessed through the URL with the apartment id.
+
+* A "See more" button that leads to the new apartment detail view.
+
+* A pagination that can also be accessed through the URL.
+
+
 <h2> Installation on local server </h2>
  
  * Download or clone git repository
