@@ -19,7 +19,7 @@ Application created for the management of information from a database (MongoDB) 
 
 ## Deployment: 
 
-This project was deployed on <a href= "https://glacial-bastion-13235.herokuapp.com/" target="_blank">Heroku</a>
+This project was deployed on <a href= "https://thawing-ravine-09830.herokuapp.com/" target="_blank">Heroku</a>
 and for the MongoDB cloud services was used <a href= "https://www.mongodb.com/cloud/atlas" target="_blank">MongoDB Atlas</a>
 
 <h2> Installation on local server </h2>
