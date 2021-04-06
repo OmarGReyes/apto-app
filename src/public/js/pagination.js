@@ -16,7 +16,7 @@ function siguientePag(e){
     const min = actual.get('min')
     const max = actual.get('max')
     const hab = actual.get('hab')
-    window.location.replace(`http://localhost:4000/aptos/filter?min=${min}&max=${max}&hab=${hab}&page=${page}`)
+    window.location.replace(`https://thawing-ravine-09830.herokuapp.com/aptos/filter?min=${min}&max=${max}&hab=${hab}&page=${page}`)
     console.log(myParam);    
 }
 
@@ -30,5 +30,5 @@ function anteriorPag(e){
     if (page ===0){
         return
     }
-    window.location.replace(`http://localhost:4000/aptos/filter?min=${min}&max=${max}&hab=${hab}&page=${page}`)
+    window.location.replace(`https://thawing-ravine-09830.herokuapp.com/aptos/filter?min=${min}&max=${max}&hab=${hab}&page=${page}`)
 }
