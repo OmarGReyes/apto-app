@@ -79,11 +79,12 @@ export const filterApto = async (req, res) => {
 
 export const consulta = async (req, res) => {
   let response = req.body;
-
+  console.log(req.body);
   let { lat, lon, km } = response;
   lat = parseFloat(lat);
   lon = parseFloat(lon);
   km = parseFloat(km);
+
 
   let aptos = await Apto.find().lean(); //Importante
 
