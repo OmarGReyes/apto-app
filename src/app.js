@@ -1,16 +1,9 @@
-// const express = require("express");
-// const path = require("path");
-// const exphbs = require("express-handlebars");
-// const methodOverride = require("method-override");
-// const _handlebars = require('handlebars');
-// const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
 import {allowInsecurePrototypeAccess} from '@handlebars/allow-prototype-access'
 import methodOverride from 'method-override'
 import exphbs from 'express-handlebars'
 import path from 'path'
 import express from 'express'
 import morgan from 'morgan'
-
 import _handlebars from 'handlebars'
 
 
@@ -47,9 +40,6 @@ app.set("view engine", ".hbs",'handlebars');
 //Middlewares
 app.use(express.urlencoded({ extended: false })); //Encode URL
 app.use(methodOverride("_method"));
-
- //modificado
-//app.use(require("./routes/users")); //modificado
 
 //Static Files
 app.use(express.static(path.join(__dirname, "public")));
